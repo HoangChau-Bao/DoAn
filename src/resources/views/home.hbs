@@ -1,0 +1,51 @@
+
+
+
+    <div class="sidebar" >
+            <a href="#">Trang Chủ </a>
+            <a href="#">Tài Khoản </a>
+		    <a href="#">Đặt Chỗ</a>
+		    <a href="#">Đã Lưu</a>
+		    <a href="#">Hộp Thư</a>
+            <a href="#">Điểm Thưởng</a>
+            <a href="#">Trợ Giúp</a>
+           
+	</div>
+	<div id="content">
+
+        <div>
+            <p class="first-comment">Cập nhật tất cả khuyến mãi hiện hành</p>
+
+            <p class="second-comment">Bạn đang chuẩn bị cho kỳ nghỉ hay bận rộn với chuyến công tác sắp tới? Hãy tiết kiệm hơn với Traveloka! Xem ngay các khuyến mãi của chúng tôi ở dưới đây:</p>
+        </div>
+
+        <div class="mt-4 mb-5">
+            
+            <div class="row">*
+
+                
+                {{#each vouchers}}
+                <div class="col-sm-6 col-lg-4">
+                    
+                    <div class="card card-voucher-item" style="width: 28rem;">
+                        <a href="/vouchers/{{this.slug}}">
+                            <img class="card-img-top" src="{{this.imageLink}}" alt="{{this.name}}">
+                        </a>               
+                        <div class="card-body">
+                            <a href="/vouchers/{{this.slug}}">
+                                <h5 class="card-title">{{this.name}}</h5>
+                            </a>                  
+                            <p class="card-text">{{this.preContent}}</p>
+                            <a href="/vouchers/{{this.slug}}" class="btn btn-primary">Xem ngay!</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                {{/each}}
+
+            </div>
+        </div>
+
+    </div>
+
+
