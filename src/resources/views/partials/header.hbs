@@ -13,42 +13,35 @@
     <!-- style-->
     <link rel="stylesheet" href="../scss/app.scss">
 </head>
-  <body>
+<body>
 <!--Header-->
-<header class="header ">
-  <div class="top1 ">
-    <p class="text-right"><i class="fa fa-phone"><span class="mx-2 " style="font-size: 20px; margin-top: 10px;">Hotline: 09013137421</span></i></p>
-    
-  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
 
-  <nav class="  hd_navbar navbar navbar-expand-lg  ">
-    <a class="navbar-brand" href="/">
-      <img src="../img/chimlogo.png"  alt="" class="logo">
-      <span class="logotxt" >TRAVELOKA</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="navbar-nav  ml-auto">
-       <li class="nav-item">
-         <a href="/" class="nav-link">Trang chủ</a>
-       </li>
-       <li class="nav-item">
-        <a href="/vouchers/addvoucher" class="nav-link">Add Voucher</a>
-      </li>
-     
-      <li class="nav-item">
-        <a href="#" class="nav-link">Đăng ký</a>
-      </li>
-	  
-      <li class="nav-item">
-        <a href="#" class="nav-link">Đăng nhập</a>
-      </li>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark justify-content-between">
+  <a class="navbar-brand" href="#">Carousel</a>
+  <div>
+    <form class="form-inline justify-content-center" style="text-align: center;">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  <div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log in</a>
+        </li>
       </ul>
-     
     </div>
-  </nav>
+  </div>
+</nav>
 </header>
 <!--end header--> 

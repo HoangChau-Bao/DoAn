@@ -8,12 +8,6 @@ const port = 3000;
 //const routes
 const route = require('./routes');
 
-//Mongoose
-const db = require('./config/db');
-
-//Connect to db
-db.connect();
-
 //Http logger
 app.use(morgan('combined'));
 

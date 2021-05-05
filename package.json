@@ -1,13 +1,15 @@
 {
-  "name": "traveloka_vourcher",
+  "name": "QLBanDienThoai",
   "version": "1.0.0",
-  "description": "traveloka, vourcher, traveloka vourcher",
+  "description": "",
   "main": "src/index.js",
   "dependencies": {
     "clipboard": "^2.0.8",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.0",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "mssql": "^6.3.1"
   },
   "devDependencies": {
     "husky": "^4.3.8",
@@ -27,12 +29,7 @@
     "type": "git",
     "url": "git+https://github.com/HoangChau-Bao/CNPMNC_Traveloka.git"
   },
-  "keywords": [
-    "traveloka",
-    "vourcher",
-    "traveloka",
-    "vourcher"
-  ],
+  "keywords": [],
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --write"
   },
@@ -44,7 +41,7 @@
   "author": "Nhom may quen r",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HoangChau-Bao/CNPMNC_Traveloka/issues"
+    "url": "https://github.com/HoangChau-Bao/DoAn1/issues"
   },
-  "homepage": "https://github.com/HoangChau-Bao/CNPMNC_Traveloka#readme"
+  "homepage": "https://github.com/HoangChau-Bao/DoAn1#readme"
 }
