@@ -2,11 +2,27 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const handlebars = require('express-handlebars');
+const session = require('express-session');
+const passport = require('passport');
 const app = express();
 const port = 3000;
 
 //const routes
 const route = require('./routes');
+
+//session
+app.use(
+  session({
+    secret: 'mysecret',
+    cookie: {
+      maxAge: 1000 * 30,
+    },
+  }),
+);
+
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Http logger
 app.use(morgan('combined'));
@@ -31,10 +47,6 @@ app.engine(
 );
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
-// app.get('/', (req,res) => {
-//     res.render('home');
-// })
 
 route(app);
 

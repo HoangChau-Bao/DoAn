@@ -4,7 +4,7 @@ const sql = require('mssql');
 class SiteController {
   //[GET] /#home
   index(req, res, next) {
-    console.log(config.userName);
+    //console.log(config.userName);
     sql.connect(config, (err, dienthoai) => {
       let str = 'SELECT * FROM DienThoai';
       let request = new sql.Request();
