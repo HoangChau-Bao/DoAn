@@ -1,0 +1,154 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+<hr>
+{{#each product}}
+	
+<div class="card">
+	<div class="row">
+		<aside class="col-sm-5 border-right">
+<article class="gallery-wrap"> 
+<div class="img-big-wrap">
+  <div> <a href="#"><img src="/img/{{ImageLink}}.jpg"></a></div>
+</div> <!-- slider-product.// -->
+<div class="img-small-wrap">
+  <div class="item-gallery"> <img src="/img/{{ImageLink}}.jpg"> </div>
+  {{!-- <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div> --}}
+</div> <!-- slider-nav.// -->
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<aside class="col-sm-7">
+<article class="card-body p-5">
+	<h3 class="title mb-3">{{TenDT}}</h3>
+
+<p class="price-detail-wrap"> 
+	<span class="price h3 text-warning"> 
+		<span class="currency"> {{number Gia}} VNĐ</span>
+	</span> 
+</p> <!-- price-detail-wrap .// -->
+<dl class="item-property">
+  <dt>Mô tả</dt>
+  <dd><p>{{MoTa}} </p></dd>
+</dl>
+{{!-- <dl class="param param-feature">
+  <dt>Màu sắc</dt>
+  <dd>Black and white</dd>
+</dl>  <!-- item-property-hor .// --> --}}
+<dl class="param param-feature">
+  <dt>Thông số</dt>
+  <dd>
+      <div class="container"> 
+      
+        <!-- Bootstrap table class -->
+        <table class="table"> 
+              
+            <tbody> 
+                <tr> 
+                    <th scope="row">Màn hình</td> 
+                    <td>{{ManHinh}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Camera Sau</td> 
+                    <td>{{CameraSau}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Camera Selfie</td> 
+                    <td>{{CameraSelfie}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">RAM</td> 
+                    <td>{{Ram}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Bộ nhớ trong</td> 
+                    <td>{{BoNhoTrong}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">CPU</td> 
+                    <td>{{CPU}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">GPU</td> 
+                    <td>{{GPU}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Dung lượng pin</td> 
+                    <td>{{DunLuongPin}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Thẻ sim</td> 
+                    <td>{{TheSim}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Hệ điều hành</td> 
+                    <td>{{HeDieuHanh}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Xuất xứ</td> 
+                    <td>{{XuatSu}}</td> 
+                </tr> 
+                <tr> 
+                    <th scope="row">Thời gian ra mắt</td> 
+                    <td>{{dateFormat NgayRaMat "MM/yyyy"}}</td> 
+                </tr> 
+            </tbody> 
+        </table> 
+    </div> </dd>
+</dl>  <!-- item-property-hor .// -->
+
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			{{!-- <dl class="param param-inline">
+			  <dt>Số lượng: </dt>
+			  <dd>
+			  	<select class="form-control form-control-sm" style="width:70px;">
+			  		<option> 1 </option>
+			  		<option> 2 </option>
+			  		<option> 3 </option>
+			  	</select>
+			  </dd>
+			</dl>  <!-- item-property .// --> --}}
+		</div> <!-- col.// -->
+		<div class="col-sm-7">
+			{{!-- <dl class="param param-inline">
+				  <dt>Màu: </dt>
+				  <dd>
+				  	<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">SM</span>
+					</label>
+					<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">MD</span>
+					</label>
+					<label class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+					  <span class="form-check-label">XXL</span>
+					</label>
+				  </dd>
+			</dl>  <!-- item-property .// --> --}}
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+	<hr>
+	<a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
+	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas"></i> Add to cart </a>
+</article> <!-- card-body.// -->
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->
+
+
+<br><br><br>
+
+{{/each}}
