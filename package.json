@@ -15,7 +15,8 @@
     "mongoose": "^5.12.3",
     "mssql": "^6.3.1",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sessionstorage": "^0.1.0"
   },
   "devDependencies": {
     "husky": "^4.3.8",

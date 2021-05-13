@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="bootstrap.min.css" />
+<script src="jquery.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<div class="vertical-nav bg-dark" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-dark">      
+    <div class="media-body">
+      <h4 class="font-weight-white text-muted mb-0">Verical Navbar</h4>
+    </div>      
+  </div>
+
+  <p class="text-white font-weight-bold text-uppercase px-3 small pb-4 mb-0">ADMIN PAGE</p>
+
+  <ul class="nav flex-column bg-dark mb-0">
+    <li class="nav-item">
+      <a href="/admin/productmanage" class="nav-link text-light bg-dark">
+        Product Management
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#userma" class="nav-link text-light bg-dark">
+        User Management
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#order" class="nav-link text-light bg-dark">
+        Order Management
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="admin-side">
+    <h1>ADMIN SIDE</h1>
+
+
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="#add-user" class="border-shadow">
+                    <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+                </a>
+            </div>
+
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>@Email</th>
+                            <th>Gender</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                            <td><a href="#delete" class="button">delete</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </main>
+
+</div>
+

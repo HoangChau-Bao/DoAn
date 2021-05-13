@@ -10,11 +10,13 @@ router.get('/login', userController.login);
 router.post(
   '/login',
   passport.authenticate('local', {
-    failureRedirect: '/user/login',
-    successRedirect: '/',
+    failureRedirect: '/user/test',
+    successRedirect: '/user/test',
   }),
 );
 
+router.get('/test', userController.test); //test case authenticated
+router.get('/logout', userController.logout);
 router.get('/cart', userController.cart);
 
 module.exports = router;

@@ -2,7 +2,6 @@ const passport = require('passport');
 const passportLocal = require('passport-local');
 const config = require('../../../config/db/dbconfig');
 const sql = require('mssql');
-const { use } = require('../../../routes/products');
 
 let LocalStrategy = passportLocal.Strategy;
 let taikhoan = '';

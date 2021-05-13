@@ -15,7 +15,7 @@ app.use(
   session({
     secret: 'mysecret',
     cookie: {
-      maxAge: 1000 * 30,
+      maxAge: 1000 * 60 * 30,
     },
   }),
 );
@@ -23,6 +23,12 @@ app.use(
 //passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+//dynamic header
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+});
 
 //Http logger
 app.use(morgan('combined'));
