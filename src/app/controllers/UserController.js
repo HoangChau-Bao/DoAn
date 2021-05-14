@@ -18,9 +18,9 @@ class UserController {
   cart(req, res) {
     console.log(req.isAuthenticated());
     if (req.isAuthenticated()) {
-      res.send(req.user);
+      res.send('Đã đăng nhập với tài khoả: ' + req.user.TaiKhoan);
     } else {
-      res.send(req.user);
+      res.send('Chưa đăng nhập');
     }
   }
 

@@ -1,16 +1,16 @@
 
-	<div id="content">
-        <div class="mt-4 mb-5">
+	<div id="content" style="padding-left: 400px;">
+        <div class="mt-5 mb-5">
             
-            <div class="row">*
+            <div class="row">
 
                 
                 {{#each dienthoai}}
-                <div class="col-sm-6 col-lg-4">
+                <div class="col-xs-3 col-md-3 col-lg-3">
                     
-                    <div class="card card-phone-item" style="width: 20rem; height: 40rem">
+                    <div class="card card-phone-item" style="width: 20rem; height: 43rem">
                         <img
-                            src="/img/{{this.ImageLink}}.jpg"
+                            src="/img/{{this.ImageLink}}"
                             class="card-img-top"
                             alt="..."
                         />
@@ -19,10 +19,10 @@
                             <p class="card-text">Giá: {{ this.Gia }}Đ </p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"> CPU: {{ this.CPU }} </li>
-                            <li class="list-group-item"> Màn hình: {{ this.ManHinh }} </li>
-                            <li class="list-group-item"> Bộ nhớ: {{ this.BoNhoTrong }}  </li>
-                            <li class="list-group-item"> Ram: {{ this.Ram }}  </li>
+                            <li class="list-group-item">CPU: {{ this.CPU }} </li>
+                            <li class="list-group-item">Màn hình: {{ this.ManHinh }} </li>
+                            <li class="list-group-item">Bộ nhớ: {{ this.BoNhoTrong }}  </li>
+                            <li class="list-group-item">Ram: {{ this.Ram }}  </li>
                         </ul>
                         <div class="card-body">
                             <a href="/products/{{this.Slug}}" class="card-link">Xem chi tiết</a>

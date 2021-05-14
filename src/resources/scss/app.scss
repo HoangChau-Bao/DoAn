@@ -231,8 +231,9 @@ body {
 .admin-side {
   padding-top: 50px;
   height: 1000px;
-  width: auto;
+  width: 80%;
   padding-top: 100px;
+  padding-left: 380px;
 }
 
 .text-gradient {
@@ -246,4 +247,18 @@ body {
 .admin-page-title {
   font-size: 3em;
   font-weight: bold;
+}
+
+table {
+  page-break-inside: auto;
+}
+tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+thead {
+  display: table-header-group;
+}
+tfoot {
+  display: table-footer-group;
 }

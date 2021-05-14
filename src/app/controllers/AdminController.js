@@ -1,29 +1,38 @@
 const config = require('../../config/db/dbconfig');
 const sql = require('mssql');
+const fileupload = require('express-fileupload');
 const { text } = require('express');
 
 class AdminController {
   //[GET] /admin/productmanage
   productmanage(req, res) {
-    sql.connect(config, (err, dienthoai) => {
-      let str = 'SELECT * FROM DienThoai';
-      let request = new sql.Request();
-      if (err) {
-        console.log('Error while querying database :- ' + err);
-        throw err;
-      } else {
-        request.query(str, function (err, dienthoai) {
+    if (req.isAuthenticated()) {
+      if (req.user.ChucVu) {
+        sql.connect(config, (err, dienthoai) => {
+          let str = 'SELECT * FROM DienThoai';
+          let request = new sql.Request();
           if (err) {
-            console.log('ERROR ' + err);
+            console.log('Error while querying database :- ' + err);
             throw err;
           } else {
-            res.render('admin/productmanage', {
-              dienthoai: dienthoai.recordset,
+            request.query(str, function (err, dienthoai) {
+              if (err) {
+                console.log('ERROR ' + err);
+                throw err;
+              } else {
+                res.render('admin/productmanage', {
+                  dienthoai: dienthoai.recordset,
+                });
+              }
             });
           }
         });
+      } else {
+        res.redirect('/');
       }
-    });
+    } else {
+      res.redirect('/');
+    }
   }
 
   //[POST] /admin/productmanage/deleteproduct
@@ -59,6 +68,11 @@ class AdminController {
   //[POST] /admin/productmanage/addnewproduct/store
   store(req, res) {
     //res.send(req.body.NgayRaMat);
+    let sampleFile = req.files.Image;
+    let uploadPath = 'src/public/img/' + req.body.DienThoaiId + sampleFile.name;
+    sampleFile.mv(uploadPath, (err) => {
+      if (err) return res.send(err);
+    });
     sql.connect(config, (err, dienthoai) => {
       let str =
         'INSERT INTO DienThoai (TenDT,ManHinh,CameraSau,CameraSelfie,Ram,BoNhoTrong,CPU,GPU,' +
@@ -97,7 +111,10 @@ class AdminController {
         "N'" +
         req.body.ManHinh +
         req.body.DienThoaiId +
-        "', N'ImageLink', N'" +
+        "', N'" +
+        req.body.DienThoaiId +
+        sampleFile.name +
+        "', N'" +
         req.body.MoTa +
         "', 'true');";
       let request = new sql.Request();

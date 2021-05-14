@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<div class="vertical-nav bg-dark" id="sidebar">
+<div class="vertical-nav bg-dark" id="sidebar" style="height: 1300px;">
   <div class="py-4 px-3 mb-4 bg-dark">      
     <div class="media-body">
       <h4 class="font-weight-white text-muted mb-0">Verical Navbar</h4>
@@ -36,13 +36,13 @@
     </li>
   </ul>
 </div>
-<div class="admin-side">
+<div class="admin-side" style="height: 1200px;">
     <div class="admin-page-title">
       <p>Product Management - Add New Product</p>
     </div>
 
 
-<form method="POST" action="/admin/productmanage/addnewproduct/store">
+<form method="POST" action="/admin/productmanage/addnewproduct/store" enctype="multipart/form-data">
     <table style="width: 100%;">
         <tr>
             <td>
@@ -142,11 +142,17 @@
                 </div>
             </td>
         </tr>
+        <tr>
+            <td colspan="2">
+                <label for="Image">Chọn hình ảnh</label>
+                <input type="file" name="Image" id="Image" required='' accept="image/*" height="300px" width="300px">
+            </td>
+        </tr>
         <tr>   
             <td colspan="2">
                 <div class="form-group">
                     <label for="MoTa">Mô tả</label>
-                    <input type="text" class="form-control" name="MoTa" id="MoTa" placeholder="Mô tả của sản phẩm" required=''>
+                    <textarea class="form-control" name="MoTa" id="MoTa" placeholder="Mô tả của sản phẩm" required='' cols="50" rows="4"></textarea>
                 </div>
             </td>
         </tr>

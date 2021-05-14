@@ -4,6 +4,7 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const session = require('express-session');
 const passport = require('passport');
+const fileupload = require('express-fileupload');
 const app = express();
 const port = 3000;
 
@@ -19,6 +20,8 @@ app.use(
     },
   }),
 );
+//express-file upload
+app.use(fileupload());
 
 //passport
 app.use(passport.initialize());
