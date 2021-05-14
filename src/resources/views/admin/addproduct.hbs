@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="bootstrap.min.css" />
+<script src="jquery.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="vertical-nav bg-dark" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-dark">      
+    <div class="media-body">
+      <h4 class="font-weight-white text-muted mb-0">Verical Navbar</h4>
+    </div>      
+  </div>
+
+  <p class="text-white font-weight-bold text-uppercase px-3 small pb-4 mb-0">ADMIN PAGE</p>
+
+  <ul class="nav flex-column bg-dark mb-0">
+    <li class="nav-item">
+      <a href="/admin/productmanage" class="nav-link text-light bg-dark">
+        Product Management
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#userma" class="nav-link text-light bg-dark">
+        User Management
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#order" class="nav-link text-light bg-dark">
+        Order Management
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="admin-side">
+    <div class="admin-page-title">
+      <p>Product Management - Add New Product</p>
+    </div>
+
+
+<form method="POST" action="/admin/productmanage/addnewproduct/store">
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="TenDT">Tên sản phẩm</label>
+                    <input type="text" class="form-control" name="TenDT" id="TenDT" placeholder="Ví dụ: Samsung Note 20 Ultra, ..." required=''>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="ManHinh">Màn Hình</label>
+                    <input type="text" class="form-control" name="ManHinh" id="ManHinh" placeholder="Ví dụ: AMOLED 1600x900, ..." required=''>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="CameraSau">Camera Sau</label>
+                    <input type="text" class="form-control" name="CameraSau" id="CameraSau" placeholder="Ví dụ: 108.0 MP + 12.0 MP + 12.0 MP, ..." required=''>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="CameraSelfie">Camera Selfie</label>
+                    <input type="text" class="form-control" name="CameraSelfie" id="CameraSelfie" placeholder="Ví dụ: 12.0 MP, ... " required=''>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="Ram">Ram</label>
+                    <input type="Text" class="form-control" name="Ram" id="Ram" placeholder="Ví dụ: 8gb, ..." required=''>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="BoNhoTrong">Bộ nhớ trong</label>
+                    <input type="text" class="form-control" name="BoNhoTrong" id="BoNhoTrong" placeholder="Ví dụ: 256 GB, ..." required=''>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="GPU">GPU</label>
+                    <input type="text" class="form-control" name="GPU" id="GPU" placeholder="Ví dụ: Adreno 618, ..." required=''>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="CPU">CPU</label>
+                    <input type="text" class="form-control" name="CPU" id="CPU" placeholder="Ví dụ: Snapdragon 720G, ..." required=''>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="DungLuongPin">Dung lượng pin</label>
+                    <input type="text" class="form-control" name="DungLuongPin" id="DungLuongPin" placeholder="Ví dụ: 5000 mAh, ..." required=''>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="TheSim">Thẻ sim</label>
+                    <input type="text" class="form-control" name="TheSim" id="TheSim" placeholder="Ví dụ:  2, Nano SIM" required=''>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="HeDieuHanh">Hệ điều hành</label>
+                    <input type="text" class="form-control" name="HeDieuHanh" id="HeDieuHanh" placeholder="Ví dụ:  Android 11, ..." required=''>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="XuatSu">Xuất sứ</label>
+                    <input type="text" class="form-control" name="XuatSu" id="XuatSu" placeholder="Ví dụ: Việt Nam, ..." required=''>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="NgayRaMat">Ngày ra mắt</label>
+                    <input type="date" class="form-control" name="NgayRaMat" id="NgayRaMat" required=''>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="Gia">Giá thành</label>
+                    <input type="number" class="form-control" name="Gia" id="Gia" placeholder="VNĐ" step="100" required=''>
+                </div>
+            </td>
+        </tr>
+        <tr>   
+            <td colspan="2">
+                <div class="form-group">
+                    <label for="MoTa">Mô tả</label>
+                    <input type="text" class="form-control" name="MoTa" id="MoTa" placeholder="Mô tả của sản phẩm" required=''>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  
+</form>
+
+
+</div>
+

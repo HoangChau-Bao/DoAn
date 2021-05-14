@@ -2,6 +2,13 @@
 <script src="jquery.slim.min.js"></script>
 <script src="popper.min.js"></script>
 <script src="bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="vertical-nav bg-dark" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-dark">      
     <div class="media-body">
@@ -30,45 +37,80 @@
   </ul>
 </div>
 <div class="admin-side">
-    <h1>ADMIN SIDE</h1>
+    <div class="admin-page-title">
+      <p>Product Management</p>
+    </div>
 
 
     <main id="site-main">
         <div class="container">
-            <div class="box-nav d-flex justify-between">
-                <a href="#add-user" class="border-shadow">
-                    <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+            <div class="box-nav d-flex justify-between" style="padding-bottom: 20px;">
+                <a href="/admin/productmanage/addnewproduct" class="border-shadow">
+                    <span class="text-gradient"><i class="fas fa-plus-square"></i>New Product </span>
                 </a>
             </div>
 
+            <div class="search-bar">
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            </div>
+             
+
             <!-- form handling -->
-            <form action="/" method="POST">
-                <table class="table">
+            
+                <table class="table" style="width: 1450px;">
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>@Email</th>
-                            <th>Gender</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Màn hình</th>
+                            <th>Ram</th>
+                            <th style="width: 100px;">Bộ nhớ</th>
+                            <th>CPU</th>
+                            <th style="width: 180px;">GPU</th>
+                            <th style="width: 150px;">Hệ điều hành</th>
+                            <th style="width: 100px;">Xuất sứ</th>
+                            <th>Giá</th>
+                            <th style="width: 120px;">Trạng thái</th>
+                            <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="myTable">
+                      {{#each dienthoai}}
+                      <form method="POST" action="/admin/productmanage/deleteproduct">
                          <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            <td><a href="#delete" class="button">delete</a></td>
+                            {{!-- <td><input type="text" name="Name" id="Name" value="Hoang" readonly="true" style="border: none;"></td>
+                            <td><label name="Name">Hoang</label></td> --}}
+                            <input type="hidden" name="DienThoaiId" value="{{DienThoaiId}}">
+                            <input type="hidden" name="TenDT" value="{{TenDT}}">
+                            <td>{{TenDT}}</td>                           
+                            <td>{{ManHinh}}</td>
+                            <td>{{Ram}}</td>
+                            <td>{{BoNhoTrong}}</td>
+                            <td style="width: fit-content;">{{CPU}}</td>
+                            <td style="width: fit-content;">{{GPU}}</td>
+                            <td>{{HeDieuHanh}}</td>
+                            <td>{{XuatSu}}</td>
+                            <td>{{Gia}}</td>
+                            <td id="status">{{TrangThaiKinhDoanh}}</td>
+                            <td ><button class="btn"><i class="fa fa-trash"></i></button></td>
+                            
                         </tr>
+                        </form>
+                        
+                        {{/each}}
                     </tbody>
                 </table>
-            </form>
         </div>
     </main>
 
 </div>
 
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

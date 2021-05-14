@@ -137,6 +137,7 @@ body {
   min-width: 17rem;
   width: 17rem;
   height: 1000px;
+  width: 300px;
   top: 0;
   left: 0;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
@@ -170,4 +171,16 @@ body {
 
 .admin-side {
   padding-top: 50px;
-  height: 1000px; }
+  height: 1000px;
+  width: auto;
+  padding-top: 100px; }
+
+.text-gradient {
+  font-size: x-large; }
+
+.search-bar {
+  padding-bottom: 20px; }
+
+.admin-page-title {
+  font-size: 3em;
+  font-weight: bold; }
