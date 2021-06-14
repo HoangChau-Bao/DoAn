@@ -6,43 +6,10 @@ const { text } = require('express');
 class AdminController {
   //[GET] /admin/productmanage
   productmanage(req, res) {
-    if (req.isAuthenticated()) {
-      if (req.user.ChucVu) {
-        sql.connect(config, (err, dienthoai) => {
-          let str = 'SELECT * FROM DienThoai';
-          let request = new sql.Request();
-          if (err) {
-            console.log('Error while querying database :- ' + err);
-            throw err;
-          } else {
-            request.query(str, function (err, dienthoai) {
-              if (err) {
-                console.log('ERROR ' + err);
-                throw err;
-              } else {
-                res.render('admin/productmanage', {
-                  dienthoai: dienthoai.recordset,
-                });
-              }
-            });
-          }
-        });
-      } else {
-        res.redirect('/');
-      }
-    } else {
-      res.redirect('/');
-    }
-  }
-
-  //[POST] /admin/productmanage/deleteproduct
-  deleteproduct(req, res) {
-    console.log(req.body);
+    // if (req.isAuthenticated()) {
+    //   if (req.user.ChucVu) {
     sql.connect(config, (err, dienthoai) => {
-      let str =
-        "DELETE FROM DienThoai WHERE DienThoaiId= '" +
-        req.body.DienThoaiId +
-        "';";
+      let str = 'SELECT * FROM DienThoai';
       let request = new sql.Request();
       if (err) {
         console.log('Error while querying database :- ' + err);
@@ -53,12 +20,21 @@ class AdminController {
             console.log('ERROR ' + err);
             throw err;
           } else {
-            res.redirect('/admin/productmanage');
+            res.render('admin/productmanage', {
+              dienthoai: dienthoai.recordset,
+            });
           }
         });
       }
     });
   }
+  //else {
+  //     res.redirect('/');
+  //   }
+  // } else {
+  //   res.redirect('/');
+  // }
+  //}
 
   //[GET] /admin/productmanage/addnewproductform
   addform(req, res) {
@@ -109,10 +85,10 @@ class AdminController {
         req.body.Gia +
         "', " +
         "N'" +
-        req.body.ManHinh +
-        req.body.DienThoaiId +
+        req.body.TenDT +
+        req.body.NgayRaMat +
         "', N'" +
-        req.body.DienThoaiId +
+        req.body.NgayRaMat +
         sampleFile.name +
         "', N'" +
         req.body.MoTa +
@@ -132,6 +108,80 @@ class AdminController {
         });
       }
     });
+  }
+
+  //[POST] /admin/productmanage/deleteproduct
+  deleteproduct(req, res) {
+    console.log(req.body);
+    if (req.body.TrangThaiKinhDoanh == 'false') {
+      sql.connect(config, (err, dienthoai) => {
+        let str =
+          "DELETE FROM DienThoai WHERE DienThoaiId= '" +
+          req.body.DienThoaiId +
+          "' AND TrangThaiKinhDoanh = 0;";
+        let request = new sql.Request();
+        if (err) {
+          console.log('Error while querying database :- ' + err);
+          throw err;
+        } else {
+          request.query(str, function (err, dienthoai) {
+            if (err) {
+              console.log('ERROR ' + err);
+              throw err;
+            } else {
+              res.redirect('/admin/productmanage');
+            }
+          });
+        }
+      });
+    }
+  }
+
+  //[POST] /admin/productmanage/changeprostatus
+  changeprostatus(req, res) {
+    if (req.body.TrangThaiKinhDoanh == 'false') {
+      sql.connect(config, (err, dienthoai) => {
+        let str =
+          'UPDATE DienThoai SET TrangThaiKinhDoanh = 1 WHERE DienThoaiId = ' +
+          req.body.DienThoaiId +
+          '';
+        let request = new sql.Request();
+        if (err) {
+          console.log('Error while querying database :- ' + err);
+          throw err;
+        } else {
+          request.query(str, function (err, dienthoai) {
+            if (err) {
+              console.log('ERROR ' + err);
+              throw err;
+            } else {
+              res.redirect('/admin/productmanage');
+            }
+          });
+        }
+      });
+    } else {
+      sql.connect(config, (err, dienthoai) => {
+        let str =
+          'UPDATE DienThoai SET TrangThaiKinhDoanh = 0 WHERE DienThoaiId = ' +
+          req.body.DienThoaiId +
+          '';
+        let request = new sql.Request();
+        if (err) {
+          console.log('Error while querying database :- ' + err);
+          throw err;
+        } else {
+          request.query(str, function (err, dienthoai) {
+            if (err) {
+              console.log('ERROR ' + err);
+              throw err;
+            } else {
+              res.redirect('/admin/productmanage');
+            }
+          });
+        }
+      });
+    }
   }
 }
 

@@ -1,12 +1,8 @@
 const config = {
-  server: 'DESKTOP-O0HOLC8',
+  server: 'DESKTOP-LHBAJ2P',
   user: 'sa',
-  password: 'Hoang0402',
+  password: 'hoang0402',
   database: 'QLDienThoai',
-  option: {
-    instancename: 'SQLEXPRESS',
-    port: 497671,
-  },
 };
 
 module.exports = config;

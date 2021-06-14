@@ -16,7 +16,7 @@ app.use(
   session({
     secret: 'mysecret',
     cookie: {
-      maxAge: 1000 * 60 * 30,
+      //maxAge: 1000 * 60 * 30,
     },
   }),
 );
