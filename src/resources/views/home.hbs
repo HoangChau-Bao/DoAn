@@ -8,25 +8,31 @@
                 {{#each dienthoai}}
                 <div class="col-xs-3 col-md-3 col-lg-3">
                     
-                    <div class="card card-phone-item" style="width: 20rem; height: 43rem">
-                        <img
-                            src="/img/{{this.ImageLink}}"
-                            class="card-img-top"
-                            alt="..."
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">{{ this.TenDT }}</h5>
-                            <p class="card-text">Giá: {{ this.Gia }}Đ </p>
-                        </div>
+                    <div class="card card-phone-item" style="width: 20rem; height:fit-content">
+                        <a href="/products/{{this.Slug}}">
+                            <img
+                                src="/img/{{this.ImageLink}}"
+                                class="card-img-top"
+                                alt="..."
+                                height="300px"
+                                width="100px"
+                            />
+                        </a>
+                        
+                        {{!-- <div class="card-body">
+                            <h5 class="card-title"><b>{{ this.TenDT }}</b></h5>
+                        </div> --}}
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">CPU: {{ this.CPU }} </li>
-                            <li class="list-group-item">Màn hình: {{ this.ManHinh }} </li>
-                            <li class="list-group-item">Bộ nhớ: {{ this.BoNhoTrong }}  </li>
-                            <li class="list-group-item">Ram: {{ this.Ram }}  </li>
+                            <li class="list-group-item name"><b style="font-size:19px;">{{ this.TenDT }}</b></li>
+                            <li class="list-group-item price"><b>Giá:</b>{{number this.Gia }} VNĐ</li>
+                            <li class="list-group-item"><b>CPU:</b>{{ this.CPU }}</li>
+                            <li class="list-group-item"><b>Màn hình:</b>{{ this.ManHinh }}</li>
+                            <li class="list-group-item"><b>Bộ nhớ:</b>{{ this.BoNhoTrong }} </li>
+                            <li class="list-group-item"><b>Ram:</b>{{ this.Ram }}  </li>
                         </ul>
                         <div class="card-body">
-                            <a href="/products/{{this.Slug}}" class="card-link">Xem chi tiết</a>
-                            <a href="#" class="card-link">Thêm giỏ hàng</a>
+                            <a href="/products/{{this.Slug}}" class="card-link"><button class="btn btn-primary">Xem chi tiết</button></a>
+                            <button class="add-to-cart btn btn-success">Thêm giỏ hàng</button>
                         </div>
                     </div>
                     
@@ -38,5 +44,4 @@
 
     </div>
     
-
 
