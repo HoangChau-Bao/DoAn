@@ -17,13 +17,13 @@ class UserController {
 
   //[GET] /user/giohang
   cart(req, res) {
-    // console.log(req.isAuthenticated());
-    // if (req.isAuthenticated()) {
-    //   res.send('Đã đăng nhập với tài khoả: ' + req.user.TaiKhoan);
-    // } else {
-    //   res.send('Chưa đăng nhập');
-    // }
-    res.render('product/cart');
+    if (req.isAuthenticated()) {
+      res.render('product/cart');
+    } else {
+      res.render('home', {
+        errormessage: 'Bạn hãy đăng nhập để được xem giỏ hàng !',
+      });
+    }
   }
 }
 module.exports = new UserController();

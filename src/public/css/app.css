@@ -390,3 +390,7 @@ h1 {
     width: 60%; }
   .totals .totals-item .totals-value {
     width: 40%; } }
+
+.invisible {
+  display: none;
+  visibility: hidden; }

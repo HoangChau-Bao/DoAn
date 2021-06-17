@@ -1,4 +1,4 @@
-
+<div id='status' class='invisible'>{{errormessage}}</div>
 	<div id="content" style="padding-left: 400px;">
         <div class="mt-5 mb-5">
             
@@ -44,5 +44,15 @@
         </div>
 
     </div>
+
+<script>
+    if($('div#status').text()!='')
+      {
+                alert($('div#status').text());
+                if(window.confirm){
+                    window.location = '/user/login';
+                }
+      }
+</script>
     
 

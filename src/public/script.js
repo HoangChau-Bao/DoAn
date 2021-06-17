@@ -119,7 +119,10 @@ function addItemToLocalStorage(title, price, imageSrc, dienthoaiid) {
     price: price,
     imageSrc: imageSrc,
   };
-  var cartItemList = JSON.parse(localStorage.getItem('cartItemList'));
+  var cartItemList = [];
+  if (localStorage.getItem('cartItemList').length != 0) {
+    cartItemList = JSON.parse(localStorage.getItem('cartItemList'));
+  }
   if (cartItemList == null) {
     cartItemList = [];
   }
@@ -194,8 +197,10 @@ function updateCartTotal() {
 }
 
 function checkOutClicked() {
-  //document.cookie = ("a = "+localStorage.getItem('cartItemList')+"; path=/;");
-  console.log(document.cookie);
+  var cart = [];
+  document.cookie =
+    'cartItemList = ' + localStorage.getItem('cartItemList') + '; path=/;';
+  localStorage.setItem('cartItemList', JSON.stringify(cart));
 
   // var cartItems = document.getElementsByClassName('cart-item')[0];
   // while (cartItems.hasChildNodes()) {
