@@ -47,7 +47,8 @@ function addToCartClicked2() {
   );
   var title = document.getElementsByClassName('title')[0].innerText;
   var imagesrc = document.getElementsByClassName('imagesrc')[0].src;
-  addItemToLocalStorage(title, price, imagesrc, dienthoaiid);
+  var quantity = 1;
+  addItemToLocalStorage(title, price, imagesrc, dienthoaiid, quantity);
 }
 
 function renderCart() {
@@ -59,6 +60,7 @@ function renderCart() {
       cartItemList[i].title,
       parseInt(cartItemList[i].price),
       cartItemList[i].imageSrc,
+      cartItemList[i].quantity,
     );
   }
   updateCartTotal();
@@ -75,15 +77,18 @@ function addToCartClicked(event) {
     .replaceAll(',', '')
     .replaceAll(' VNĐ', '');
   var imageSrc = shopItem.getElementsByClassName('card-img-top')[0].src;
-  console.log(title, price, imageSrc);
-  addItemToLocalStorage(title, price, imageSrc, dienthoaiid);
+  var quantity = 1;
+  console.log(title, price, imageSrc, quantity);
+  addItemToLocalStorage(title, price, imageSrc, dienthoaiid, quantity);
 }
 
-function addItemToCart(title, price, imageSrc) {
+function addItemToCart(title, price, imageSrc, quantity) {
   var price = price.toLocaleString('current');
   var cartRow = document.createElement('div');
   cartRow.classList.add('product');
   var cartItems = document.getElementsByClassName('cart-item')[0];
+  var quantity = parseInt(quantity);
+  console.log(quantity);
   var cartRowContents = `<div class="product-image">
             <img src="${imageSrc}">
         </div>
@@ -93,7 +98,7 @@ function addItemToCart(title, price, imageSrc) {
                 </div>
         <div class="product-price">${price}</div>
             <div class="product-quantity">
-                <input class="quantity" type="number" value="1" min="1">
+                <input class="quantity" type="number" value="${quantity}" min="1" max="10">
             </div>
         <div class="product-removal">
             <button class="remove-product" type="button">
@@ -108,9 +113,13 @@ function addItemToCart(title, price, imageSrc) {
   document
     .getElementsByClassName('checkout')[0]
     .addEventListener('click', checkOutClicked);
+
+  cartRow
+    .getElementsByClassName('quantity')[0]
+    .addEventListener('change', quantityChanged);
 }
 
-function addItemToLocalStorage(title, price, imageSrc, dienthoaiid) {
+function addItemToLocalStorage(title, price, imageSrc, dienthoaiid, quantity) {
   //test local storage
   var flag = true;
   var cartItem = {
@@ -118,11 +127,13 @@ function addItemToLocalStorage(title, price, imageSrc, dienthoaiid) {
     title: title,
     price: price,
     imageSrc: imageSrc,
+    quantity: quantity,
   };
   var cartItemList = [];
   if (localStorage.getItem('cartItemList').length != 0) {
     cartItemList = JSON.parse(localStorage.getItem('cartItemList'));
   }
+
   if (cartItemList == null) {
     cartItemList = [];
   }
@@ -174,7 +185,22 @@ function quantityChanged(event) {
   if (isNaN(input.value || input.value <= 0)) {
     input.value = 1;
   }
+  updateQuantity();
   updateCartTotal();
+}
+
+function updateQuantity() {
+  var cartItemContainer = document.getElementsByClassName('shopping-cart')[0];
+  var cartRows = cartItemContainer.getElementsByClassName('product');
+  var cartItemList = JSON.parse(localStorage.getItem('cartItemList'));
+  for (var i = 0; i < cartRows.length; i++) {
+    var cartRow = cartRows[i];
+    var quantityy = cartRow.getElementsByClassName('product-quantity')[0];
+    var quantityElement = quantityy.getElementsByClassName('quantity')[0];
+    var quantity = quantityElement.value;
+    cartItemList[i].quantity = quantity;
+  }
+  localStorage.setItem('cartItemList', JSON.stringify(cartItemList));
 }
 
 function updateCartTotal() {
