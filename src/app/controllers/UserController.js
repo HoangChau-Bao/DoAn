@@ -1,5 +1,6 @@
 const config = require('../../config/db/dbconfig');
 const sql = require('mssql');
+const { Store } = require('express-session');
 
 class UserController {
   //[GET] /user/login
@@ -23,10 +24,6 @@ class UserController {
     //   res.send('Chưa đăng nhập');
     // }
     res.render('product/cart');
-  }
-
-  test(req, res) {
-    res.send(req.user);
   }
 }
 module.exports = new UserController();

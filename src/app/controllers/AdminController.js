@@ -183,6 +183,29 @@ class AdminController {
       });
     }
   }
+
+  ordermanage(req, res) {
+    sql.connect(config, (err, result) => {
+      let str =
+        'SELECT hd.IDHoaDon, nd.HoTen, hd.NgayMuaHang, hd.NgayXacNhan, hd.TrangThai, hd.TongHoaDon, hd.DiaChiGiaoHang, hd.SoDienThoaiDatHang FROM hoadon hd LEFT JOIN nguoidung nd ON hd.IDKhachHang = nd.ID';
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, hoadon) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            console.log(hoadon);
+            //res.send(hoadon.recordset);
+            res.render('admin/ordermanage', { hoadon: hoadon.recordset });
+          }
+        });
+      }
+    });
+  }
 }
 
 module.exports = new AdminController();

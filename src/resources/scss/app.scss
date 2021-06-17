@@ -354,6 +354,7 @@ h1 {
 .product {
   margin-bottom: 20px;
   padding-bottom: 10px;
+  font-size: 18px;
 
   .product-image {
     text-align: center;
@@ -401,6 +402,9 @@ h1 {
     clear: both;
     width: 100%;
     margin-bottom: 10px;
+    padding-right: 400px;
+    font-size: 25px;
+    font-weight: bold;
 
     label {
       float: left;

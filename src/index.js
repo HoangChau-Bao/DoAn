@@ -5,6 +5,8 @@ const handlebars = require('express-handlebars');
 const session = require('express-session');
 const passport = require('passport');
 const fileupload = require('express-fileupload');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 3000;
 
@@ -22,6 +24,9 @@ app.use(
 );
 //express-file upload
 app.use(fileupload());
+
+//cookieParser
+app.use(cookieParser());
 
 //passport
 app.use(passport.initialize());
@@ -45,6 +50,8 @@ app.use(
     extended: true, //body parser được tích học từ express 4.16
   }),
 );
+
+app.use(cors());
 
 //Template engine
 app.engine(
