@@ -206,6 +206,55 @@ class AdminController {
       }
     });
   }
+
+  confirmbill(req, res) {
+    let trangthai = true;
+    console.log(req.body.IDHoaDon);
+    sql.connect(config, (err, result) => {
+      let str =
+        'SELECT TOP 1 * FROM HoaDon WHERE IDHOADON = ' + req.body.IDHoaDon + '';
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, hoadon) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            console.log(hoadon.recordset[0].TrangThai);
+            trangthai = hoadon.recordset[0].TrangThai;
+
+            if (trangthai == false) {
+              sql.connect(config, (err, result) => {
+                let str =
+                  'UPDATE HoaDon SET TrangThai = 1 WHERE IDHOADON = ' +
+                  req.body.IDHoaDon +
+                  '';
+                let request = new sql.Request();
+                if (err) {
+                  console.log('Error while querying database :- ' + err);
+                  throw err;
+                } else {
+                  request.query(str, function (err, hoadon) {
+                    if (err) {
+                      console.log('ERROR ' + err);
+                      throw err;
+                    } else {
+                      res.redirect('/admin/ordermanage');
+                    }
+                  });
+                }
+              });
+            } else {
+              return true;
+            }
+          }
+        });
+      }
+    });
+  }
 }
 
 module.exports = new AdminController();

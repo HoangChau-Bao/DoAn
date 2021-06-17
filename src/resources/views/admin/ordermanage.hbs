@@ -77,9 +77,19 @@
                             <td>{{number this.TongHoaDon}} VNĐ</td>
                             <td>{{this.DiaChiGiaoHang}}</td>
                             <td>{{this.SoDienThoaiDatHang}}</td>
-                            <td><button class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i></button></td>
-                            <td><button class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
-                            <td><button class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
+                            <form action="/admin/confirmbill" method="post">
+                              <input type="hidden" name="IDHoaDon" value="{{this.IDHoaDon}}">
+                              <td><button class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i></button></td>
+                            </form>
+                            <form action="/admin/deletebill" method="post">
+                              <input type="hidden" value="{{this.IDHoaDon}}">
+                              <td><button class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
+                            </form>
+                            <form action="/admin/billdetail" method="get">
+                              <input type="hidden" value="{{this.IDHoaDon}}">
+                              <td><button class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
+                            </form>
+                            
                         </tr>                                           
                         {{/each}}
                     </tbody>

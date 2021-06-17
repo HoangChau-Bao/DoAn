@@ -13,7 +13,7 @@ router.post(
   '/productmanage/changestatusproduct',
   adminController.changeprostatus,
 );
-
+router.post('/confirmbill', adminController.confirmbill);
 router.get('/', adminController.productmanage);
 
 module.exports = router;
