@@ -21,6 +21,7 @@ router.get('/cart', userController.cart);
 router.get('/profile', userController.profile);
 router.get('/register', userController.register);
 router.get('/history', userController.orderlist);
+router.get('/orderdetail', userController.orderdetail);
 router.post('/registerstore', userController.registerstore);
 router.post('/profileupdate', userController.profileupdate);
 

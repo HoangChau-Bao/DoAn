@@ -165,5 +165,29 @@ class UserController {
       }
     });
   }
+
+  orderdetail(req, res) {
+    console.log(req.query.IDHoaDon);
+    sql.connect(config, (err, result) => {
+      let str =
+        ' SELECT CTHoaDon.IDHoaDon, CTHoaDon.IDCTHoaDon, DienThoai.TenDT, DienThoai.Gia, CTHoaDon.SoLuong, CTHoaDon.Tong FROM CTHoaDon INNER JOIN DienThoai ON CTHoaDon.IDHoaDon = ' +
+        req.query.IDHoaDon +
+        ' AND CTHoaDon.DienThoaiId = DienThoai.DienThoaiId';
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, result) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            res.render('user/orderdetail', { cthoadon: result.recordset });
+          }
+        });
+      }
+    });
+  }
 }
 module.exports = new UserController();

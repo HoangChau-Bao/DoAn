@@ -422,12 +422,12 @@ h1 {
   display: flex;
   justify-content: center; }
 
-.mt-4 .search-product input[type="search"] {
+.mt-4 .search-product input[type='search'] {
   border-radius: 25px;
   width: 150px;
   outline: none;
   margin-right: 10px; }
 
-.mt-4 .search-product input[type="submit"] {
+.mt-4 .search-product input[type='submit'] {
   border-radius: 25px;
   font-family: arial, sans-serif; }

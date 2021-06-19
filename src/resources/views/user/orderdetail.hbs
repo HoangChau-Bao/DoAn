@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="bootstrap.min.css" />
+<script src="jquery.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="vertical-nav bg-dark" id="sidebar" style="height: 900px;">
+  <div class="py-4 px-3 mb-4 bg-dark">      
+    <div class="media-body">
+      <h4 class="font-weight-white text-muted mb-0">Verical Navbar</h4>
+    </div>      
+  </div>
+
+  <p class="text-white font-weight-bold text-uppercase px-3 small pb-4 mb-0">Tài khoản</p>
+
+  <ul class="nav flex-column bg-dark mb-0">
+      <li class="nav-item">
+      <a href="/user/profile" class="nav-link text-light bg-dark">
+        Thông tin người dùng
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/user/history" class="nav-link text-light bg-dark">
+        Thông tin đơn hàng
+      </a>
+    </li>
+
+  </ul>
+</div>
+<div class="admin-side" style="height: 900px;">
+    <div class="admin-page-title">
+      <p>Thông tin đơn hàng của bạn</p>
+    </div>
+
+
+    <div class ="site-main" >
+        <div class="container">
+              <table class="table table-bordered table-striped mydataTable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Điện thoại</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                      {{#each cthoadon}}
+                        <tr>
+                            <td>{{this.TenDT}}</td>
+                            <td>{{number this.Gia}} VNĐ</td>
+                            <td>{{number this.SoLuong}}</td>
+                            <td>{{number this.Tong}} VNĐ</td>
+                        </tr>                                           
+                        {{/each}}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/dt-1.10.24/datatables.min.js"></script>
+
+<script>
+    $('.mydataTable').DataTable({"lengthChange": false});
+</script>

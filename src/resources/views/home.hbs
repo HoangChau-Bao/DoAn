@@ -4,17 +4,18 @@
 <div id='status' class='invisible'>{{errormessage}}</div>
 
     <div class="mt-4">
+        <form action="/search" method="get">
        <div class="search-product">
-           <input type="search" />
-           <input type="submit" />
+           <input type="text" name="search" value="" autocomplete="off" style="margin-right: 10px">
+           <button type="submit" class="btn-primary">Tìm kiếm</button>
        </div>
-       <ul class="brand">Hãng Sản Xuất
+       <ul class="brand" style="list-style-type: none;"><h5>Hãng Sản Xuất</h5>
            <li>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" name="iPhone" value="iPhone" id="defaultCheck1">
                     <h6>
                         <label class="form-check-label" for="defaultCheck1">
-                        Apple
+                        iPhone
                     </label>
                     </h6>
                 </div>
@@ -22,10 +23,10 @@
 
            <li>
                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" name="SamSung" value="SamSung" id="defaultCheck1">
                     <h6>
                         <label class="form-check-label" for="defaultCheck1">
-                        Apple
+                        SamSung
                     </label>
                     </h6>
                 </div>
@@ -33,10 +34,10 @@
 
            <li>
                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" name="OPPO" value="OPPO" id="defaultCheck1">
                     <h6>
                         <label class="form-check-label" for="defaultCheck1">
-                        Apple
+                        OPPO
                     </label>
                     </h6>
                 </div>
@@ -44,35 +45,36 @@
 
            <li>
               <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" name="Xiaomi" value="Xiaomi" id="defaultCheck1">
                     <h6>
                         <label class="form-check-label" for="defaultCheck1">
-                        Apple
+                        Xiaomi
                     </label>
                     </h6>
                 </div>
            </li>
            <li>
                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" name="Vivo" value="Vivo" id="defaultCheck1">
                     <h6>
                         <label class="form-check-label" for="defaultCheck1">
-                        Apple
+                        Vivo
                     </label>
                     </h6>
                 </div>
            </li>
            <li>
                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" name="Nokia" value="Nokia" id="defaultCheck1">
                     <h6>
                         <label class="form-check-label" for="defaultCheck1">
-                        Apple
+                        Nokia
                     </label>
                     </h6>
                 </div>
            </li> 
        </ul>
+       </form>
    </div>
 
 
@@ -131,6 +133,9 @@
             }
             else if(window.confirm && $('div#status').text() == 'Giỏ hàng của bạn đang rỗng !'){
                 window.location = '/user/cart';
+            }
+            else if(window.confirm && $('div#status').text() == 'Không tìm thấy loại bạn đang tìm !'){
+                window.location = '/';
             }
             else if(window.confirm){
              window.location = '/user/login';
