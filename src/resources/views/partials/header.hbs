@@ -45,13 +45,19 @@
         <li class="nav-item">
           <a class="nav-link" href="/user/cart">Giỏ hàng</a>
         </li>
-        {{#if isAuthenticated}}        
-        <li class="nav-item active">
-          <a class="nav-link" href="/user/logout">Đăng xuất<span class="sr-only">(current)</span></a>
+        {{#if isAuthenticated}} 
+        <li class="nav-item">
+          <a class="nav-link" href="/user/profile">Tài khoản</a>
+        </li>       
+        <li class="nav-item">
+          <a class="nav-link" href="/user/logout">Đăng xuất</a>
         </li>
         {{else}}
-        <li class="nav-item active">
-          <a class="nav-link" href="/user/login">Đăng nhập<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/login">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/register">Đăng Ký</a>
         </li>
         {{/if}}
       </ul>

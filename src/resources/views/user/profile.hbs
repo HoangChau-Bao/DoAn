@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="bootstrap.min.css" />
+<script src="jquery.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="vertical-nav bg-dark" id="sidebar" style="height: 900px;">
+  <div class="py-4 px-3 mb-4 bg-dark">      
+    <div class="media-body">
+      <h4 class="font-weight-white text-muted mb-0">Verical Navbar</h4>
+    </div>      
+  </div>
+
+  <p class="text-white font-weight-bold text-uppercase px-3 small pb-4 mb-0">Tài khoản</p>
+
+  <ul class="nav flex-column bg-dark mb-0">
+      <li class="nav-item">
+      <a href="/user/profile" class="nav-link text-light bg-dark">
+        Thông tin người dùng
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/user/history" class="nav-link text-light bg-dark">
+        Thông tin đơn hàng
+      </a>
+    </li>
+
+  </ul>
+</div>
+<div class="admin-side" style="height: 900px;">
+    <div class="admin-page-title">
+      <p>Thông tin người dùng</p>
+    </div>
+
+
+    <div class ="site-main" >
+        <div class="container">
+            {{#each nguoidung}}
+             <form action="/user/profileupdate" method="post" class="form-control" style="padding-bottom: 400px; width: 1000px;">
+                    <input type="hidden" name="TaiKhoan" value="{{TaiKhoan}}" >
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Họ Tên</label>
+                        <input type="text" name="Ho" class="form-control" value="{{HoTen}}">
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                        <input type="tel" class="form-control" id="SoDienThoai" name="SoDienThoai" placeholder="Số điện thoại..." autocomplete="off" minlength="10" maxlength="10" value="{{this.SDT}}" pattern="[0-9]{10}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <textarea class="form-control" name="DiaChi" rows="4">{{this.DiaChi}}</textarea>
+                        </div>
+                    </div>
+                <div class="col-md-12">
+                    <button class="btn btn-primary">Update</button>
+                    <input class="btn btn-basic" name="buttoncancel" id="buttoncancel" type="button" onclick="window.location.replace('/user/profile')" value="Cancel" />
+                </div>  
+            </form>
+            {{/each}}
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+

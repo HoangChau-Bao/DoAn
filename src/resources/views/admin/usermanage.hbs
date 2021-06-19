@@ -39,13 +39,17 @@
 </div>
 <div class="admin-side" style="height: 1800px;">
     <div class="admin-page-title">
-      <p>Order Management</p>
+      <p>User Management</p>
     </div>
 
 
     <div class ="site-main" >
         <div class="container">
-            
+            <div class="box-nav d-flex justify-between" style="padding-bottom: 20px">
+                <a href="/admin/newuser" class="border-shadow">
+                    <span class="text-gradient"><i class="fas fa-plus-square"></i> New user</span>
+                </a>
+            </div>
              
 
             <!-- form handling -->
@@ -53,47 +57,36 @@
                 <table class="table table-bordered table-striped mydataTable">
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
-                            <th>Tên khách</th>
-                            <th>Ngày mua</th>
-                            <th>Ngày xác nhận</th>
-                            <th>Trạng thái</th>
-                            <th>Tổng hóa đơn</th>
-                            <th>Địa chỉ giao hàng</th>
-                            <th>Số điện thoại</th>
-                            <th>Xác nhận</th>
-                            <th>Hủy</th>
-                            <th>Chi tiết</th>
+                            <th>Tài khoản</th>
+                            <th>Họ tên</th>
+                            <th>SĐT</th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Chức vụ</th>
+                            <th>Trang thái</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                      {{#each hoadon}}
-                        <tr>
-                            <td>{{this.IDHoaDon}}</td>
-                            <td>{{this.HoTen}}</td>
-                            <td>{{this.NgayMuaHang}}</td>
-                            <td>{{this.NgayXacNhan}}</td>
-                            <td>{{this.TrangThai}}</td>
-                            <td>{{number this.TongHoaDon}} VNĐ</td>
-                            <td>{{this.DiaChiGiaoHang}}</td>
-                            <td>{{this.SoDienThoaiDatHang}}</td>
+                      {{#each nguoidung}}
+                         <tr>
+                            <td>{{TaiKhoan}}</td>
+                            <td>{{HoTen}}</td>
+                            <td>{{SDT}}</td>
+                            <td>{{Email}}</td>                            
+                            <td>{{DiaChi}}</td>
+                            <td>{{ChucVu}}</td>
+                            <td>{{TrangThai}}</td>
 
-                            <form action="/admin/confirmbill" method="post">
-                              <input type="hidden" name="IDHoaDon" value="{{this.IDHoaDon}}">
-                              <td><button class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i></button></td>
-                            </form>
+                            <td>
+                                <form action="/admin/changeuserstatus" method="POST">
+                                    <input type="hidden" name="ID" value="{{ID}}">
+                                    <button type="submit" class="btn btn-success">Đổi trạng thái</button>
+                                </form>
+                            </td>
 
-                            <form action="/admin/deletebill" method="post">
-                              <input type="hidden" name="IDHoaDon" value="{{this.IDHoaDon}}">
-                              <td><button class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
-                            </form>
-
-                            <form action="/admin/ordermanage/orderdetail" method="get">
-                              <input type="hidden" name="IDHoaDon" value="{{this.IDHoaDon}}">
-                              <td><button class="btn btn-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></button></td>
-                            </form>
-                            
-                        </tr>                                           
+                        </tr>
+                                               
                         {{/each}}
                     </tbody>
                 </table>

@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="bootstrap.min.css" />
+<script src="jquery.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="vertical-nav bg-dark" id="sidebar" style="height: 1000px;">
+  <div class="py-4 px-3 mb-4 bg-dark">      
+    <div class="media-body">
+      <h4 class="font-weight-white text-muted mb-0">Verical Navbar</h4>
+    </div>      
+  </div>
+
+  <p class="text-white font-weight-bold text-uppercase px-3 small pb-4 mb-0">ADMIN PAGE</p>
+
+  <ul class="nav flex-column bg-dark mb-0">
+      <li class="nav-item">
+      <a href="/admin/usermanage" class="nav-link text-light bg-dark">
+        User Management
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/admin/productmanage" class="nav-link text-light bg-dark">
+        Product Management
+      </a>
+    </li>
+    
+    <li class="nav-item">
+      <a href="/admin/ordermanage" class="nav-link text-light bg-dark">
+        Order Management
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="admin-side" style="height: 1000px;">
+    <div class="admin-page-title">
+      <p>Add New User</p>
+    </div>
+
+
+    <div class ="site-main">
+        <div class="container">
+            <div class="wrapper">
+                <form class="form-signin" method="POST" action="/admin/newuserstore">  
+                {{#if messages}}
+                    {{messages}}
+                {{/if}}     
+                <div class="form-group">
+                    <label for="txtTaiKhoan">Tài Khoản</label>
+                    <input type="text" class="form-control" id="txtTaiKhoan" name="TaiKhoan" required='true' autocomplete="off" minlength="5" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="txtMatKhau">Mật Khẩu</label>
+                    <input type="password" class="form-control" id="txtMatKhau" name="MatKhau" required='true' autocomplete="off" minlength="5" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="txtHoTen">Họ Tên</label>
+                    <input type="text" class="form-control" id="txtHoTen" name="HoTen" required='true' autocomplete="off" minlength="5" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="txtEmail">Email</label>
+                    <input type="text" class="form-control" id="txtEmail" name="Email" required='true' autocomplete="off" minlength="5" maxlength="30">
+                </div>
+                <div class="form-group">
+                    <label for="txtSDT">Số Điện Thoại</label>
+                    <input type="tel" class="form-control" id="txtSDT" name="SDT" required='true' autocomplete="off" minlength="10" maxlength="10" pattern="[0-9]{10}">
+                </div>
+                <div class="form-group">
+                    <label for="txtDiaChi">Địa Chỉ</label>
+                    <input type="text" class="form-control" id="txtDiaChi" name="DiaChi" required='true' autocomplete="off" minlength="5">
+                </div>
+                <div class="form-group">
+                    <label for="ChucVu">Chức vụ:</label>
+                    <select id="ChucVu" name="ChucVu">
+                        <option value="true">Admin</option>
+                        <option value="false">Người dùng</option>
+                    </select>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Xác nhận</button>   
+            
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/dt-1.10.24/datatables.min.js"></script>
+
+<script>
+    $('.mydataTable').DataTable({"lengthChange": false});
+</script>

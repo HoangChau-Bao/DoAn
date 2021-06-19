@@ -37,6 +37,38 @@ class AdminController {
   // }
   //}
 
+  usermanage(req, res) {
+    // if (req.isAuthenticated()) {
+    //   if (req.user.ChucVu) {
+    sql.connect(config, (err, result) => {
+      let str = 'SELECT * FROM NguoiDung';
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, result) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            console.log(result.recordset);
+            res.render('admin/usermanage', {
+              nguoidung: result.recordset,
+            });
+          }
+        });
+      }
+    });
+  }
+  //else {
+  //     res.redirect('/');
+  //   }
+  // } else {
+  //   res.redirect('/');
+  // }
+  //}
+
   //[GET] /admin/productmanage/addnewproductform
   addform(req, res) {
     res.render('admin/addproduct');
@@ -347,6 +379,138 @@ class AdminController {
             throw err;
           } else {
             res.render('admin/orderdetail', { cthoadon: result.recordset });
+          }
+        });
+      }
+    });
+  }
+
+  changeuserstatus(req, res) {
+    //res.send(req.body.ID);
+    sql.connect(config, (err, result) => {
+      let str = 'SELECT TOP 1 * FROM NguoiDung WHERE ID = ' + req.body.ID + '';
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, nguoidung) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            console.log(nguoidung.recordset[0].TrangThai);
+            let trangthai = nguoidung.recordset[0].TrangThai;
+
+            if (trangthai == false) {
+              sql.connect(config, (err, result) => {
+                let str =
+                  'UPDATE NguoiDung SET TrangThai = 1 WHERE ID = ' +
+                  req.body.ID +
+                  '';
+                let request = new sql.Request();
+                if (err) {
+                  console.log('Error while querying database :- ' + err);
+                  throw err;
+                } else {
+                  request.query(str, function (err, result) {
+                    if (err) {
+                      console.log('ERROR ' + err);
+                      throw err;
+                    } else {
+                      res.redirect('/admin/usermanage');
+                    }
+                  });
+                }
+              });
+            } else {
+              sql.connect(config, (err, result) => {
+                let str =
+                  'UPDATE NguoiDung SET TrangThai = 0 WHERE ID = ' +
+                  req.body.ID +
+                  '';
+                let request = new sql.Request();
+                if (err) {
+                  console.log('Error while querying database :- ' + err);
+                  throw err;
+                } else {
+                  request.query(str, function (err, result) {
+                    if (err) {
+                      console.log('ERROR ' + err);
+                      throw err;
+                    } else {
+                      res.redirect('/admin/usermanage');
+                    }
+                  });
+                }
+              });
+            }
+          }
+        });
+      }
+    });
+  }
+
+  newuser(req, res) {
+    res.render('admin/newuser');
+  }
+
+  newuserstore(req, res) {
+    console.log(req.body);
+    sql.connect(config, (err, result) => {
+      let str =
+        "SELECT * FROM NguoiDung WHERE TaiKhoan = N'" + req.body.TaiKhoan + "'";
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, result) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            if (result.recordset.length != 0) {
+              res.render('admin/newuser', {
+                messages: 'Tài khoản đã tồn tại !',
+              });
+            } else {
+              sql.connect(config, (err, result) => {
+                let str =
+                  "INSERT INTO NguoiDung VALUES ('" +
+                  req.body.TaiKhoan +
+                  req.body.Email +
+                  "',N'" +
+                  req.body.HoTen +
+                  "', '" +
+                  req.body.SDT +
+                  "', N'" +
+                  req.body.Email +
+                  "', N'" +
+                  req.body.DiaChi +
+                  "', '" +
+                  req.body.ChucVu +
+                  "', N'" +
+                  req.body.TaiKhoan +
+                  "', N'" +
+                  req.body.MatKhau +
+                  "', '1')";
+                let request = new sql.Request();
+                if (err) {
+                  console.log('Error while querying database :- ' + err);
+                  throw err;
+                } else {
+                  request.query(str, function (err, result) {
+                    if (err) {
+                      console.log('ERROR ' + err);
+                      throw err;
+                    } else {
+                      res.redirect('/admin/usermanage');
+                    }
+                  });
+                }
+              });
+            }
           }
         });
       }

@@ -525,3 +525,46 @@ h1 {
   display: none;
   visibility: hidden;
 }
+
+.mt-4 {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 300px;
+  border: 1px solid #000;
+  margin-left: 50px;
+  padding-top: 25px;
+}
+
+.mt-4 > .brand {
+  list-style: none;
+  font-weight: bold;
+  margin-left: 0px;
+}
+
+.mt-4 .brand li {
+  width: 250px;
+  margin: 10px 0 10px 0;
+  font-weight: normal;
+}
+
+.mt-4 .search-product {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.mt-4 .search-product input[type='search'] {
+  border-radius: 25px;
+  width: 150px;
+  outline: none;
+  margin-right: 10px;
+}
+
+.mt-4 .search-product input[type='submit'] {
+  border-radius: 25px;
+  font-family: arial, sans-serif;
+}

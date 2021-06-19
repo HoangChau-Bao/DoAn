@@ -18,5 +18,10 @@ router.post(
 //router.get('/test', userController.test); //test case authenticated
 router.get('/logout', userController.logout);
 router.get('/cart', userController.cart);
+router.get('/profile', userController.profile);
+router.get('/register', userController.register);
+router.get('/history', userController.orderlist);
+router.post('/registerstore', userController.registerstore);
+router.post('/profileupdate', userController.profileupdate);
 
 module.exports = router;

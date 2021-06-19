@@ -9,84 +9,58 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<div class="vertical-nav bg-dark" id="sidebar" style="height: 1800px;">
+<div class="vertical-nav bg-dark" id="sidebar" style="height: 900px;">
   <div class="py-4 px-3 mb-4 bg-dark">      
     <div class="media-body">
       <h4 class="font-weight-white text-muted mb-0">Verical Navbar</h4>
     </div>      
   </div>
 
-  <p class="text-white font-weight-bold text-uppercase px-3 small pb-4 mb-0">ADMIN PAGE</p>
+  <p class="text-white font-weight-bold text-uppercase px-3 small pb-4 mb-0">Tài khoản</p>
 
   <ul class="nav flex-column bg-dark mb-0">
       <li class="nav-item">
-      <a href="/admin/usermanage" class="nav-link text-light bg-dark">
-        User Management
+      <a href="/user/profile" class="nav-link text-light bg-dark">
+        Thông tin người dùng
       </a>
     </li>
     <li class="nav-item">
-      <a href="/admin/productmanage" class="nav-link text-light bg-dark">
-        Product Management
+      <a href="/user/history" class="nav-link text-light bg-dark">
+        Thông tin đơn hàng
       </a>
     </li>
-    
-    <li class="nav-item">
-      <a href="/admin/ordermanage" class="nav-link text-light bg-dark">
-        Order Management
-      </a>
-    </li>
+
   </ul>
 </div>
-<div class="admin-side" style="height: 1800px;">
+<div class="admin-side" style="height: 900px;">
     <div class="admin-page-title">
-      <p>Order Management</p>
+      <p>Thông tin đơn hàng của bạn</p>
     </div>
 
 
     <div class ="site-main" >
         <div class="container">
-            
-             
-
-            <!-- form handling -->
-            
-                <table class="table table-bordered table-striped mydataTable">
+              <table class="table table-bordered table-striped mydataTable">
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
-                            <th>Tên khách</th>
                             <th>Ngày mua</th>
                             <th>Ngày xác nhận</th>
                             <th>Trạng thái</th>
                             <th>Tổng hóa đơn</th>
                             <th>Địa chỉ giao hàng</th>
                             <th>Số điện thoại</th>
-                            <th>Xác nhận</th>
-                            <th>Hủy</th>
                             <th>Chi tiết</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
                       {{#each hoadon}}
                         <tr>
-                            <td>{{this.IDHoaDon}}</td>
-                            <td>{{this.HoTen}}</td>
                             <td>{{this.NgayMuaHang}}</td>
                             <td>{{this.NgayXacNhan}}</td>
                             <td>{{this.TrangThai}}</td>
                             <td>{{number this.TongHoaDon}} VNĐ</td>
                             <td>{{this.DiaChiGiaoHang}}</td>
                             <td>{{this.SoDienThoaiDatHang}}</td>
-
-                            <form action="/admin/confirmbill" method="post">
-                              <input type="hidden" name="IDHoaDon" value="{{this.IDHoaDon}}">
-                              <td><button class="btn btn-success"><i class="fa fa-check-circle" aria-hidden="true"></i></button></td>
-                            </form>
-
-                            <form action="/admin/deletebill" method="post">
-                              <input type="hidden" name="IDHoaDon" value="{{this.IDHoaDon}}">
-                              <td><button class="btn btn-danger"><i class="fa fa-ban" aria-hidden="true"></i></button></td>
-                            </form>
 
                             <form action="/admin/ordermanage/orderdetail" method="get">
                               <input type="hidden" name="IDHoaDon" value="{{this.IDHoaDon}}">

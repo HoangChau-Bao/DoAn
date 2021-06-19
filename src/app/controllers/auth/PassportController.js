@@ -6,6 +6,7 @@ const sql = require('mssql');
 let LocalStrategy = passportLocal.Strategy;
 let taikhoan = '';
 let matkhau = '';
+let trangthai = false;
 let user = null;
 let initPassportLocal = () => {
   passport.use(
@@ -29,12 +30,16 @@ let initPassportLocal = () => {
                 user = NguoiDung.recordset[0];
                 taikhoan = user.TaiKhoan;
                 matkhau = user.MatKhau;
+                trangthai = user.TrangThai;
 
                 console.log(user);
                 if (taikhoan == '') {
                   return done(null, false);
                 }
                 if (matkhau == '') {
+                  return done(null, false);
+                }
+                if (trangthai == false) {
                   return done(null, false);
                 }
                 console.log(user);
