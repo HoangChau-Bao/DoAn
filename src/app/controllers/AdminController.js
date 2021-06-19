@@ -2,6 +2,7 @@ const config = require('../../config/db/dbconfig');
 const sql = require('mssql');
 const fileupload = require('express-fileupload');
 const { text } = require('express');
+const dateFormat = require('dateformat');
 
 class AdminController {
   //[GET] /admin/productmanage
@@ -139,6 +140,7 @@ class AdminController {
 
   //[POST] /admin/productmanage/changeprostatus
   changeprostatus(req, res) {
+    console.log(today);
     if (req.body.TrangThaiKinhDoanh == 'false') {
       sql.connect(config, (err, dienthoai) => {
         let str =
@@ -227,9 +229,12 @@ class AdminController {
             trangthai = hoadon.recordset[0].TrangThai;
 
             if (trangthai == false) {
+              var today = dateFormat(new Date(), 'yyyy/mm/dd');
               sql.connect(config, (err, result) => {
                 let str =
-                  'UPDATE HoaDon SET TrangThai = 1 WHERE IDHOADON = ' +
+                  "UPDATE HoaDon SET TrangThai = 1, NgayXacNhan = '" +
+                  today +
+                  "' WHERE IDHOADON = " +
                   req.body.IDHoaDon +
                   '';
                 let request = new sql.Request();
@@ -250,6 +255,98 @@ class AdminController {
             } else {
               return true;
             }
+          }
+        });
+      }
+    });
+  }
+
+  deletebill(req, res) {
+    let trangthai = true;
+    console.log(req.body.IDHoaDon);
+    sql.connect(config, (err, result) => {
+      let str =
+        'SELECT TOP 1 * FROM HoaDon WHERE IDHOADON = ' + req.body.IDHoaDon + '';
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, hoadon) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            console.log(hoadon.recordset[0].TrangThai);
+            trangthai = hoadon.recordset[0].TrangThai;
+
+            if (trangthai == false) {
+              sql.connect(config, (err, result) => {
+                let str =
+                  'DELETE HoaDon WHERE IDHOADON = ' + req.body.IDHoaDon + '';
+                let request = new sql.Request();
+                if (err) {
+                  console.log('Error while querying database :- ' + err);
+                  throw err;
+                } else {
+                  request.query(str, function (err, hoadon) {
+                    if (err) {
+                      console.log('ERROR ' + err);
+                      throw err;
+                    } else {
+                      sql.connect(config, (err, result) => {
+                        let str =
+                          'DELETE CTHoaDon WHERE IDHOADON = ' +
+                          req.body.IDHoaDon +
+                          '';
+                        let request = new sql.Request();
+                        if (err) {
+                          console.log(
+                            'Error while querying database :- ' + err,
+                          );
+                          throw err;
+                        } else {
+                          request.query(str, function (err, hoadon) {
+                            if (err) {
+                              console.log('ERROR ' + err);
+                              throw err;
+                            } else {
+                              res.redirect('/admin/ordermanage');
+                            }
+                          });
+                        }
+                      });
+                    }
+                  });
+                }
+              });
+            } else {
+              return true;
+            }
+          }
+        });
+      }
+    });
+  }
+
+  orderdetail(req, res) {
+    console.log(req.query.IDHoaDon);
+    sql.connect(config, (err, result) => {
+      let str =
+        ' SELECT CTHoaDon.IDHoaDon, CTHoaDon.IDCTHoaDon, DienThoai.TenDT, DienThoai.Gia, CTHoaDon.SoLuong, CTHoaDon.Tong FROM CTHoaDon INNER JOIN DienThoai ON CTHoaDon.IDHoaDon = ' +
+        req.query.IDHoaDon +
+        ' AND CTHoaDon.DienThoaiId = DienThoai.DienThoaiId';
+      let request = new sql.Request();
+      if (err) {
+        console.log('Error while querying database :- ' + err);
+        throw err;
+      } else {
+        request.query(str, function (err, result) {
+          if (err) {
+            console.log('ERROR ' + err);
+            throw err;
+          } else {
+            res.render('admin/orderdetail', { cthoadon: result.recordset });
           }
         });
       }

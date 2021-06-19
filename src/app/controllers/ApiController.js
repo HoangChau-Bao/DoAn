@@ -11,7 +11,9 @@ class ApiControler {
 
     if (cartitemList.length == 0) {
       console.log('cart: ', cartitemList);
-      res.status(400).send('null');
+      res.render('home', {
+        errormessage: 'Giỏ hàng của bạn đang rỗng !',
+      });
     } else {
       console.log('user: ', req.user);
       console.log('cart: ', cartitemList);
@@ -109,7 +111,9 @@ class ApiControler {
 
       var cart = [];
       res.clearCookie('cartItemList');
-      res.status(200).send('ok!');
+      res.render('home', {
+        errormessage: 'Đặt hàng thành công !',
+      });
     }
   }
 }

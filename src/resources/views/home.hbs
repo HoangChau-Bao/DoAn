@@ -48,10 +48,16 @@
 <script>
     if($('div#status').text()!='')
       {
-                alert($('div#status').text());
-                if(window.confirm){
-                    window.location = '/user/login';
-                }
+            alert($('div#status').text());
+            if(window.confirm && $('div#status').text() == 'Đặt hàng thành công !'){
+             window.location = '/';
+            }
+            else if(window.confirm && $('div#status').text() == 'Giỏ hàng của bạn đang rỗng !'){
+                window.location = '/user/cart';
+            }
+            else if(window.confirm){
+             window.location = '/user/login';
+            }
       }
 </script>
     

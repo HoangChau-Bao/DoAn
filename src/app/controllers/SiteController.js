@@ -23,5 +23,7 @@ class SiteController {
       }
     });
   }
+
+  search(req, res) {}
 }
 module.exports = new SiteController();
