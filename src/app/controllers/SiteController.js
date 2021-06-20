@@ -6,7 +6,7 @@ class SiteController {
   index(req, res, next) {
     //console.log(config.userName);
     sql.connect(config, (err, dienthoai) => {
-      let str = 'SELECT * FROM DienThoai';
+      let str = 'SELECT * FROM DienThoai WHERE TrangThaiKinhDoanh = 1';
       let request = new sql.Request();
       if (err) {
         console.log('Error while querying database :- ' + err);
@@ -25,20 +25,45 @@ class SiteController {
   }
 
   search(req, res) {
-    let str1 = "select * from dienthoai where TenDT = ''";
+    let str1 =
+      "select * from dienthoai where TrangThaiKinhDoanh = 1 AND TenDT = ''";
     if (req.query.search != '') {
-      str1 += " Or TenDT LIKE '%" + req.query.search + "%'";
+      str1 +=
+        " Or TrangThaiKinhDoanh = 1 AND TenDT LIKE '%" +
+        req.query.search +
+        "%'";
       console.log(str1);
     } else {
       if (req.query.iPhone)
-        str1 += " or TenDT LIKE '%" + req.query.iPhone + "%'";
+        str1 +=
+          " or TrangThaiKinhDoanh = 1 AND TenDT LIKE '%" +
+          req.query.iPhone +
+          "%'";
       if (req.query.SamSung)
-        str1 += " or TenDT LIKE '%" + req.query.SamSung + "%'";
+        str1 +=
+          " or TrangThaiKinhDoanh = 1 AND TenDT LIKE '%" +
+          req.query.SamSung +
+          "%'";
       if (req.query.Xiaomi)
-        str1 += " or TenDT LIKE '%" + req.query.Xiaomi + "%'";
-      if (req.query.Vivo) str1 += " or TenDT LIKE '%" + req.query.Vivo + "%'";
-      if (req.query.OPPO) str1 += " or TenDT LIKE '%" + req.query.OPPO + "%'";
-      if (req.query.Nokia) str1 += " or TenDT LIKE '%" + req.query.Nokia + "%'";
+        str1 +=
+          " or TrangThaiKinhDoanh = 1 AND TenDT LIKE '%" +
+          req.query.Xiaomi +
+          "%'";
+      if (req.query.Vivo)
+        str1 +=
+          " or TrangThaiKinhDoanh = 1 AND TenDT LIKE '%" +
+          req.query.Vivo +
+          "%'";
+      if (req.query.OPPO)
+        str1 +=
+          " or TrangThaiKinhDoanh = 1 AND TenDT LIKE '%" +
+          req.query.OPPO +
+          "%'";
+      if (req.query.Nokia)
+        str1 +=
+          " or TrangThaiKinhDoanh = 1 AND TenDT LIKE '%" +
+          req.query.Nokia +
+          "%'";
       //res.send(req.query);
       console.log(str1);
     }

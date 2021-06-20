@@ -7,67 +7,65 @@ const dateFormat = require('dateformat');
 class AdminController {
   //[GET] /admin/productmanage
   productmanage(req, res) {
-    // if (req.isAuthenticated()) {
-    //   if (req.user.ChucVu) {
-    sql.connect(config, (err, dienthoai) => {
-      let str = 'SELECT * FROM DienThoai';
-      let request = new sql.Request();
-      if (err) {
-        console.log('Error while querying database :- ' + err);
-        throw err;
-      } else {
-        request.query(str, function (err, dienthoai) {
+    if (req.isAuthenticated()) {
+      if (req.user.ChucVu) {
+        sql.connect(config, (err, dienthoai) => {
+          let str = 'SELECT * FROM DienThoai';
+          let request = new sql.Request();
           if (err) {
-            console.log('ERROR ' + err);
+            console.log('Error while querying database :- ' + err);
             throw err;
           } else {
-            res.render('admin/productmanage', {
-              dienthoai: dienthoai.recordset,
+            request.query(str, function (err, dienthoai) {
+              if (err) {
+                console.log('ERROR ' + err);
+                throw err;
+              } else {
+                res.render('admin/productmanage', {
+                  dienthoai: dienthoai.recordset,
+                });
+              }
             });
           }
         });
+      } else {
+        res.redirect('/');
       }
-    });
+    } else {
+      res.redirect('/');
+    }
   }
-  //else {
-  //     res.redirect('/');
-  //   }
-  // } else {
-  //   res.redirect('/');
-  // }
-  //}
 
   usermanage(req, res) {
-    // if (req.isAuthenticated()) {
-    //   if (req.user.ChucVu) {
-    sql.connect(config, (err, result) => {
-      let str = 'SELECT * FROM NguoiDung';
-      let request = new sql.Request();
-      if (err) {
-        console.log('Error while querying database :- ' + err);
-        throw err;
-      } else {
-        request.query(str, function (err, result) {
+    if (req.isAuthenticated()) {
+      if (req.user.ChucVu) {
+        sql.connect(config, (err, result) => {
+          let str = 'SELECT * FROM NguoiDung';
+          let request = new sql.Request();
           if (err) {
-            console.log('ERROR ' + err);
+            console.log('Error while querying database :- ' + err);
             throw err;
           } else {
-            console.log(result.recordset);
-            res.render('admin/usermanage', {
-              nguoidung: result.recordset,
+            request.query(str, function (err, result) {
+              if (err) {
+                console.log('ERROR ' + err);
+                throw err;
+              } else {
+                console.log(result.recordset);
+                res.render('admin/usermanage', {
+                  nguoidung: result.recordset,
+                });
+              }
             });
           }
         });
+      } else {
+        res.redirect('/');
       }
-    });
+    } else {
+      res.redirect('/');
+    }
   }
-  //else {
-  //     res.redirect('/');
-  //   }
-  // } else {
-  //   res.redirect('/');
-  // }
-  //}
 
   //[GET] /admin/productmanage/addnewproductform
   addform(req, res) {
@@ -78,7 +76,7 @@ class AdminController {
   store(req, res) {
     //res.send(req.body.NgayRaMat);
     let sampleFile = req.files.Image;
-    let uploadPath = 'src/public/img/' + req.body.DienThoaiId + sampleFile.name;
+    let uploadPath = 'src/public/img/' + req.body.NgayRaMat + sampleFile.name;
     sampleFile.mv(uploadPath, (err) => {
       if (err) return res.send(err);
     });
@@ -172,7 +170,6 @@ class AdminController {
 
   //[POST] /admin/productmanage/changeprostatus
   changeprostatus(req, res) {
-    console.log(today);
     if (req.body.TrangThaiKinhDoanh == 'false') {
       sql.connect(config, (err, dienthoai) => {
         let str =
@@ -219,26 +216,34 @@ class AdminController {
   }
 
   ordermanage(req, res) {
-    sql.connect(config, (err, result) => {
-      let str =
-        'SELECT hd.IDHoaDon, nd.HoTen, hd.NgayMuaHang, hd.NgayXacNhan, hd.TrangThai, hd.TongHoaDon, hd.DiaChiGiaoHang, hd.SoDienThoaiDatHang FROM hoadon hd LEFT JOIN nguoidung nd ON hd.IDKhachHang = nd.ID';
-      let request = new sql.Request();
-      if (err) {
-        console.log('Error while querying database :- ' + err);
-        throw err;
-      } else {
-        request.query(str, function (err, hoadon) {
+    if (req.isAuthenticated()) {
+      if (req.user.ChucVu) {
+        sql.connect(config, (err, result) => {
+          let str =
+            'SELECT hd.IDHoaDon, nd.HoTen, hd.NgayMuaHang, hd.NgayXacNhan, hd.TrangThai, hd.TongHoaDon, hd.DiaChiGiaoHang, hd.SoDienThoaiDatHang FROM hoadon hd LEFT JOIN nguoidung nd ON hd.IDKhachHang = nd.ID';
+          let request = new sql.Request();
           if (err) {
-            console.log('ERROR ' + err);
+            console.log('Error while querying database :- ' + err);
             throw err;
           } else {
-            console.log(hoadon);
-            //res.send(hoadon.recordset);
-            res.render('admin/ordermanage', { hoadon: hoadon.recordset });
+            request.query(str, function (err, hoadon) {
+              if (err) {
+                console.log('ERROR ' + err);
+                throw err;
+              } else {
+                console.log(hoadon);
+                //res.send(hoadon.recordset);
+                res.render('admin/ordermanage', { hoadon: hoadon.recordset });
+              }
+            });
           }
         });
+      } else {
+        res.redirect('/');
       }
-    });
+    } else {
+      res.redirect('/');
+    }
   }
 
   confirmbill(req, res) {

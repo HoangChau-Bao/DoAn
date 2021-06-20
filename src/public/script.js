@@ -93,8 +93,7 @@ function addItemToCart(title, price, imageSrc, quantity) {
             <img src="${imageSrc}">
         </div>
         <div class="product-details">
-                <div class="product-title">${title}</div>
-                <p class="product-description">Decription of this product</p>
+                <div class="product-title"><h4>${title}</h4></div>
                 </div>
         <div class="product-price">${price}</div>
             <div class="product-quantity">
